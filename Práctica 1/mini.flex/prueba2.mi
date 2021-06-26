@@ -1,0 +1,36 @@
+procedure EJEMPLO_ADICIONES is
+    type FECHA is record
+        DIA : INTEGER;
+        MES : INTEGER;
+        ANNO : INTEGER;
+        finish record;
+
+    HOY : FECHA;
+
+    lista : array (1..100) of integer;
+    acumulador : integer;
+
+    type t_hash_cadenas is hashtable of <integer, array (1..50) of character>;
+    mi_hash : hashtable of <FECHA, integer>;
+
+start
+    HOY.DIA := MARTES;
+
+    case HOY.DIA is
+        when LUNES .. JUEVES  -> TRABAJO;
+        when VIERNES | SABADO -> TRABAJO; DEPORTE;
+        when others           -> null;
+    finish case ;
+
+    valor := mi_hash{hoy}; -- lectura de un valor de una tabla hash
+    imprimir(mi_hash{hoy});
+
+    mi_hash{manana} := 123; -- escritura de un valor (manana es una variable de tipo FECHA)
+
+    acumulador := 0;
+
+    foreach elemento in lista
+    loop
+        acumulador := acumulador + elemento;
+    finish loop;
+finish EJEMPLO_ADICIONES;
