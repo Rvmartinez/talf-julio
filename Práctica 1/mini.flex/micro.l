@@ -1,11 +1,97 @@
+%option case-insensitive
 %{
 #include <stdio.h>
 #include "tokens.h"  
 
+int num_lineas=0;
 %}
 
 %%
 
+\n num_lineas++;
+\t\r\n
+array {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (ARRAY);} 
+boolean {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (BOOLEAN);}
+case {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (CASE);}
+character {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (CHARACTER);}
+constant {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (CONSTANT);}
+else {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (ELSE);}
+exit {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (EXIT);}
+false {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (FALSE);}
+finish {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (FINISH);}
+float {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (FLOAT);}
+for {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (FOR);}
+foreach {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (FOREACH);}
+function {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (FUNCTION);}
+hashtable {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (HASHTABLE);}
+if {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (IF);}
+in {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (IN);}
+integer {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (INTEGER);}
+is {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (IS);}
+loop {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (LOOP);}
+nil {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (NIL);}
+of {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (OF);}
+others {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (OTHERS);}
+out {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (OUT);}
+procedure {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (PROCEDURE);}
+record {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (RECORD);}
+return {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (RETURN);}
+reverse {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (REVERSE);}
+start {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (START);}
+then {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (THEN);}
+true {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (TRUE);}
+type {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (TYPE);}
+start {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (START);}
+when {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (WHEN);}
+while {printf("\nLinea %d, Palabra reservada: %s",num_lineas, yytext);return (WHILE);}
+
+"{" {printf("\nLinea %d, delimitador %s",num_lineas, yytext);return yytext[0];}
+"}" {printf("\nLinea %d, delimitador %s",num_lineas, yytext);return yytext[0];}
+"(" {printf("\nLinea %d, delimitador %s",num_lineas, yytext);return yytext[0];}
+")" {printf("\nLinea %d, delimitador %s",num_lineas, yytext);return yytext[0];}
+":" {printf("\nLinea %d, delimitador %s",num_lineas, yytext);return yytext[0];}
+";" {printf("\nLinea %d, delimitador %s",num_lineas, yytext);return yytext[0];}
+"," {printf("\nLinea %d, delimitador %s",num_lineas, yytext);return yytext[0];}
+"->" {printf("\nLinea %d, delimitador %s",num_lineas, yytext);return yytext[0];}
+"[" {printf("\nLinea %d, delimitador %s",num_lineas, yytext);return yytext[0];}
+"]" {printf("\nLinea %d, delimitador %s",num_lineas, yytext);return yytext[0];}
+".." {printf("\nLinea %d, delimitador %s",num_lineas, yytext);return yytext[0];}
+"|" {printf("\nLinea %d, delimitador %s",num_lineas, yytext);return yytext[0];}
+
+
+"+" {printf("\nLinea %d, operador %s",num_lineas, yytext);return yytext[0];}
+"-" {printf("\nLinea %d, operador %s",num_lineas, yytext);return yytext[0];}
+"*" {printf("\nLinea %d, operador %s",num_lineas, yytext);return yytext[0];}
+"/" {printf("\nLinea %d, operador %s",num_lineas, yytext);return yytext[0];}
+"%" {printf("\nLinea %d, operador %s",num_lineas, yytext);return yytext[0];}
+"\*\*" {printf("\nLinea %d, operador %s",num_lineas, yytext);return yytext[0];}
+"@" {printf("\nLinea %d, operador %s",num_lineas, yytext);return yytext[0];}
+"&" {printf("\nLinea %d, operador %s",num_lineas, yytext);return yytext[0];}
+"=" {printf("\nLinea %d, operador %s",num_lineas, yytext);return yytext[0];}
+"/=" {printf("\nLinea %d, operador %s",num_lineas, yytext);return yytext[0];}
+"<" {printf("\nLinea %d, operador %s",num_lineas, yytext);return yytext[0];}
+">" {printf("\nLinea %d, operador %s",num_lineas, yytext);return yytext[0];}
+"<=" {printf("\nLinea %d, operador %s",num_lineas, yytext);return yytext[0];}
+">=" {printf("\nLinea %d, operador %s",num_lineas, yytext);return yytext[0];}
+"not" {printf("\nLinea %d, operador %s",num_lineas, yytext);return yytext[0];}
+"and" {printf("\nLinea %d, operador %s",num_lineas, yytext);return yytext[0];}
+"or" {printf("\nLinea %d, operador %s",num_lineas, yytext);return yytext[0];}
+":=" {printf("\nLinea %d, operador %s",num_lineas, yytext);return yytext[0];}
+"\." {printf("\nLinea %d, operador %s",num_lineas, yytext);return yytext[0];} 
+
+((_[0-9]*)?[a-zA-Z_$][a-zA-Z\\d_$]*) {printf("\nLinea %d, identificador %s",num_lineas,yytext);return (IDENTIFICADOR);}
+
+
+#[0-7]+ {printf("\nLinea %d, CTC_INT %s",num_lineas, yytext); return (CTC_INT);}
+(#[0-7])?[.]#[0-7]+  {printf("\nLinea %d, CTC_FLOAT %s",num_lineas, yytext); return (CTC_FLOAT);}
+[0-9]+   {printf("\nLinea %d, CTC_INT %d",num_lineas, atoi(yytext)); return (CTC_INT);}
+[0-9]*\.[0-9]+    {printf("\nLinea %d, CTC_FLOAT %f",num_lineas, atof(yytext)); return (CTC_FLOAT);}
+[0-9]+[eE][+-]?[0-9]+   {printf("\nLinea %d, CTC_FLOAT %f",num_lineas, atof(yytext)); return (CTC_FLOAT);}
+[0-9]+(\.[0-9]+)?([expEXP][+-]?[0-9]+)? {printf("\nLinea %d, CTC_FLOAT %f",num_lineas, atof(yytext)); return (CTC_FLOAT) ;}
+(#[hH][0-9a-fA-F]+)?[.]#[hH][0-9a-fA-F]+   {printf("\nLinea %d, CTC_FLOAT %s",num_lineas, yytext); return (CTC_FLOAT);}
+#[hH][0-9a-fA-F]+ {printf("\nLinea %d, CTC_INT %s",num_lineas, yytext); return (CTC_INT);}
+
+. printf("\nLinea %d, errrrrrrrrrrrror: ",num_lineas);
 
 %%
 
