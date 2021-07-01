@@ -51,3 +51,5 @@ start
         WRITE(TABLA(I)); 
     finish loop; 
 finish ORDENAR_POR_MONTONES;
+
+

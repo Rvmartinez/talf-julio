@@ -665,9 +665,9 @@ char *yytext;
 #line 1 "micro.l"
 #line 3 "micro.l"
 #include <stdio.h>
-#include "tokens.h"  
+#include "micro.tab.h"  
 
-int num_lineas=0;
+int num_lineas=1;
 #line 672 "lex.yy.c"
 
 #line 674 "lex.yy.c"
@@ -2373,19 +2373,4 @@ void yyfree (void * ptr )
 
 #line 114 "micro.l"
 
-
-int yywrap() {
-  return(1);
-  }
-
-int main(int argc, char *argv[]) {
-
-  if (argc < 2) {
-    printf("Uso: ./mini NombreArchivo\n");
-    }
-  else {
-    yyin = fopen(argv[1],"r");
-    while (yylex());
-    }
-  }
 

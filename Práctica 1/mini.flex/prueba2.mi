@@ -12,6 +12,7 @@ procedure EJEMPLO_ADICIONES is
 
     type t_hash_cadenas is hashtable of <integer, array (1..50) of character>;
     mi_hash : hashtable of <FECHA, integer>;
+    
 
 start
     HOY.DIA := MARTES;
@@ -34,3 +35,7 @@ start
         acumulador := acumulador + elemento;
     finish loop;
 finish EJEMPLO_ADICIONES;
+
+"HOLA ESTO \
+ES UNA PRUEBA \
+DE QUE VA"

@@ -16,19 +16,20 @@
 %token PROCEDURE RECORD RETURN REVERSE START THEN TRUE TYPE WHEN WHILE
 
 %%
+declaracion 
+:declaracion_objeto
+| declaracion_tipo
+| declaracion_subprograma
 
-/* DECLARACIONES Y TIPOS */
+declaracion_objeto: ( IDENTIFICADOR )+ ':' [ 'constant' ]? tipo_escalar [ asignacion ]? ';' {printf("hola");}
+| ( IDENTIFICADOR )+ ':' nombre_de_tipo ';'
+| ( IDENTIFICADOR )+ ':' tipo_compuesto ';'
 
+tipo_escalar: 'INTEGER'
 
-/* SUBPROGRAMAS */
-
-
-/* INSTRUCCIONES */
-
-
-/* EXPRESIONES */
-
-
+asignacion : ':=' (expresion)+
+nombre_de_tipo : IDENTIFICADOR
+tipo_compuesto : tipo_tablero | tipo_registro | tipo_hashtable
 %%
 
 

@@ -1,0 +1,191 @@
+Terminals unused in grammar
+
+    AND
+    ARRAY
+    ASIG
+    BOOLEAN
+    CASE
+    CHARACTER
+    CONSTANT
+    DISTINTO
+    DOS_PTOS
+    ELSE
+    FINISH
+    EXIT
+    EXP
+    FLECHA
+    FLOAT
+    FOREACH
+    FOR
+    FUNCTION
+    HASHTABLE
+    IDENTIFICADOR
+    IF
+    IN
+    INTEGER
+    IS
+    LOOP
+    MAYOR_IGUAL
+    MENOR_IGUAL
+    MOD
+    NOT
+    NIL
+    OF
+    OR
+    OTHERS
+    OUT
+    PROCEDURE
+    RECORD
+    RETURN
+    REVERSE
+    START
+    THEN
+    TYPE
+    WHEN
+    WHILE
+
+
+Grammar
+
+    0 $accept: literal $end
+
+    1 literal: CTC_CADENA
+    2        | CTC_CARACTER
+    3        | CTC_FLOAT
+    4        | CTC_INT
+    5        | TRUE
+    6        | FALSE
+
+
+Terminals, with rules where they appear
+
+    $end (0) 0
+    error (256)
+    AND (258)
+    ARRAY (259)
+    ASIG (260)
+    BOOLEAN (261)
+    CTC_CADENA (262) 1
+    CTC_CARACTER (263) 2
+    CTC_FLOAT (264) 3
+    CTC_INT (265) 4
+    CASE (266)
+    CHARACTER (267)
+    CONSTANT (268)
+    DISTINTO (269)
+    DOS_PTOS (270)
+    ELSE (271)
+    FINISH (272)
+    EXIT (273)
+    EXP (274)
+    FALSE (275) 6
+    FLECHA (276)
+    FLOAT (277)
+    FOREACH (278)
+    FOR (279)
+    FUNCTION (280)
+    HASHTABLE (281)
+    IDENTIFICADOR (282)
+    IF (283)
+    IN (284)
+    INTEGER (285)
+    IS (286)
+    LOOP (287)
+    MAYOR_IGUAL (288)
+    MENOR_IGUAL (289)
+    MOD (290)
+    NOT (291)
+    NIL (292)
+    OF (293)
+    OR (294)
+    OTHERS (295)
+    OUT (296)
+    PROCEDURE (297)
+    RECORD (298)
+    RETURN (299)
+    REVERSE (300)
+    START (301)
+    THEN (302)
+    TRUE (303) 5
+    TYPE (304)
+    WHEN (305)
+    WHILE (306)
+
+
+Nonterminals, with rules where they appear
+
+    $accept (52)
+        on left: 0
+    literal (53)
+        on left: 1 2 3 4 5 6
+        on right: 0
+
+
+State 0
+
+    0 $accept: . literal $end
+
+    CTC_CADENA    shift, and go to state 1
+    CTC_CARACTER  shift, and go to state 2
+    CTC_FLOAT     shift, and go to state 3
+    CTC_INT       shift, and go to state 4
+    FALSE         shift, and go to state 5
+    TRUE          shift, and go to state 6
+
+    literal  go to state 7
+
+
+State 1
+
+    1 literal: CTC_CADENA .
+
+    $default  reduce using rule 1 (literal)
+
+
+State 2
+
+    2 literal: CTC_CARACTER .
+
+    $default  reduce using rule 2 (literal)
+
+
+State 3
+
+    3 literal: CTC_FLOAT .
+
+    $default  reduce using rule 3 (literal)
+
+
+State 4
+
+    4 literal: CTC_INT .
+
+    $default  reduce using rule 4 (literal)
+
+
+State 5
+
+    6 literal: FALSE .
+
+    $default  reduce using rule 6 (literal)
+
+
+State 6
+
+    5 literal: TRUE .
+
+    $default  reduce using rule 5 (literal)
+
+
+State 7
+
+    0 $accept: literal . $end
+
+    $end  shift, and go to state 8
+
+
+State 8
+
+    0 $accept: literal $end .
+
+    $default  accept
